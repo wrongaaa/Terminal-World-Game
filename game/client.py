@@ -44,6 +44,10 @@ class GameClient:
 
             # 接收响应
             data = self.socket.recv(4096).decode()
+            if not data:
+                self.socket.close()
+                return False, "服务器无响应（可能是防火墙阻止或端口未转发）"
+
             msg = json.loads(data)
 
             if msg.get('type') == 'error':
@@ -65,9 +69,13 @@ class GameClient:
             return False, "未知响应"
 
         except socket.timeout:
-            return False, "连接超时"
+            return False, "连接超时（检查IP是否正确、服务器是否运行、防火墙设置）"
         except ConnectionRefusedError:
-            return False, "无法连接到服务器"
+            return False, "连接被拒绝（服务器未运行或端口错误）"
+        except socket.gaierror:
+            return False, "无法解析主机地址（检查IP格式是否正确）"
+        except json.JSONDecodeError:
+            return False, "服务器响应异常（连接可能被中断）"
         except Exception as e:
             return False, f"连接错误: {e}"
 

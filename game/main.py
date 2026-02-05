@@ -246,10 +246,24 @@ class Game:
         """加入房间"""
         self.renderer.clear_screen()
         name = input("请输入你的名字: ").strip() or "玩家"
-        host = input("请输入房主IP: ").strip() or "127.0.0.1"
+        host_input = input("请输入房主IP (可包含端口如 192.168.1.1:5555): ").strip() or "127.0.0.1"
 
+        # 解析 IP:端口 格式
+        if ':' in host_input:
+            parts = host_input.rsplit(':', 1)
+            host = parts[0]
+            try:
+                port = int(parts[1])
+            except ValueError:
+                print("端口格式错误，使用默认端口")
+                port = DEFAULT_PORT
+        else:
+            host = host_input
+            port = DEFAULT_PORT
+
+        print(f"正在连接 {host}:{port}...")
         self.client = GameClient()
-        success, msg = self.client.connect(host, name)
+        success, msg = self.client.connect(host, name, port)
 
         if not success:
             print(f"连接失败: {msg}")
