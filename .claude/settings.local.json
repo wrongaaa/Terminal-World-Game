@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python:*)",
+      "Bash(where python:*)",
+      "Bash(dir \"C:\\\\Users\\\\Administrator\\\\Desktop\\\\9178\\\\game\")",
+      "Bash(py --version:*)",
+      "Bash(py:*)",
+      "Bash(gh --version:*)",
+      "Bash(winget install:*)",
+      "Bash(powershell -Command \"Invoke-WebRequest -Uri ''https://github.com/cli/cli/releases/download/v2.63.2/gh_2.63.2_windows_amd64.msi'' -OutFile ''C:\\\\Users\\\\Administrator\\\\Desktop\\\\gh_installer.msi''\")",
+      "Bash(msiexec /i \"C:\\\\Users\\\\Administrator\\\\Desktop\\\\gh_installer.msi\" /quiet /norestart)",
+      "Bash(\"C:\\\\Program Files\\\\GitHub CLI\\\\gh.exe\" --version)",
+      "Bash(\"C:\\\\Program Files \\(x86\\)\\\\GitHub CLI\\\\gh.exe\" --version)",
+      "Bash(powershell -Command \"Invoke-WebRequest -Uri ''https://github.com/cli/cli/releases/download/v2.63.2/gh_2.63.2_windows_amd64.zip'' -OutFile ''C:\\\\Users\\\\Administrator\\\\Desktop\\\\gh.zip''; Expand-Archive -Path ''C:\\\\Users\\\\Administrator\\\\Desktop\\\\gh.zip'' -DestinationPath ''C:\\\\Users\\\\Administrator\\\\Desktop\\\\gh_cli'' -Force\")",
+      "Bash(dir \"C:\\\\Users\\\\Administrator\\\\Desktop\\\\gh_cli\" /s /b)",
+      "Bash(findstr:*)",
+      "Bash(\"C:\\\\Users\\\\Administrator\\\\Desktop\\\\gh_cli\\\\bin\\\\gh.exe\" --version)",
+      "Bash(\"C:\\\\Users\\\\Administrator\\\\Desktop\\\\gh_cli\\\\bin\\\\gh.exe\" auth status)",
+      "Bash(git init:*)",
+      "Bash(git config:*)",
+      "Bash(git add:*)"
+    ]
+  }
+}
